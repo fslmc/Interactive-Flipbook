@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: sans-serif;
+    background-color: white;
+}
+
+/* Book */
+.book {
+    position: relative;
+    width: 550px; /* scaled down width */
+    height: 390px; /* keep height the same */
+
+    transition: transform 0.5s;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+
+}
+
+.front,
+.back {
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 1px solid black;
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg)
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg);
+}
+
+/* Controller Buttons */
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.5s;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover i {
+    color: #636363;
+}
+
+i {
+    font-size: 50px;
+    color: gray;
+}
+
+/* Paper stack order */
+#paper1 {
+    z-index: 3;
+}
+
+#paper2 {
+    z-index: 2;
+}
+
+#paper3 {
+    z-index: 1;
+}
+
+/* CONTENT */
+#front1 {
+    background-image: url('../assets/paper1/Dio & Ella Flipbook-01.jpg');
+    background-size: cover;
+}
+
+#back1 {
+    background-image: url('../assets/paper1/Dio & Ella Flipbook-02.jpg');
+    background-size: cover;
+}
+
+#front2 {
+    background-image: url('../assets/paper2/Dio & Ella Flipbook-03.jpg');
+    background-size: cover;
+}
+
+#back2 {
+    background-image: url('../assets/paper2/Dio & Ella Flipbook-04.jpg');
+    background-size: cover;
+}
+
+#front3 {
+    background-image: url('../assets/paper3/Dio & Ella Flipbook-05.jpg');
+    background-size: cover;
+}
+
+#back3 {
+    background-image: url('../assets/paper3/Dio & Ella Flipbook-06.jpg');
+    background-size: cover;
+}
+
+#front4 {
+    background-image: url('../assets/paper4/Dio & Ella Flipbook-07.jpg');
+    background-size: cover;
+}
+
+#back4 {
+    background-image: url('../assets/paper4/Dio & Ella Flipbook-08.jpg');
+    background-size: cover;
+}
+
+#front5 {
+    background-image: url('../assets/paper5/Dio & Ella Flipbook-09.jpg');
+    background-size: cover;
+}
+
+#back5 {
+    background-image: url('../assets/paper5/Dio & Ella Flipbook-10.jpg');
+    background-size: cover;
+}
+
+#front6 {
+    background-image: url('../assets/paper6/Dio & Ella Flipbook-11.jpg');
+    background-size: cover;
+}
+
+#back6 {
+    background-image: url('../assets/paper6/Dio & Ella Flipbook-12.jpg');
+    background-size: cover;
+}
+
+#front7 {
+    background-image: url('../assets/paper7/Dio & Ella Flipbook-13.jpg');
+    background-size: cover;
+}
+
+#back7 {
+    background-image: url('../assets/paper7/Dio & Ella Flipbook-14.jpg');
+    background-size: cover;
+}
+
+#front8 {
+    background-image: url('../assets/paper8/Dio & Ella Flipbook-15.jpg');
+    background-size: cover;
+}
+
+#back8 {
+    background-image: url('../assets/paper8/Dio & Ella Flipbook-16.jpg');
+    background-size: cover;
+}
+
+#front9 {
+    background-image: url('../assets/paper9/Dio & Ella Flipbook-17.jpg');
+    background-size: cover;
+}
+
+#back9 {
+    background-image: url('../assets/paper9/Dio & Ella Flipbook-18.jpg');
+    background-size: cover;
+}
+
+/* Draggable Styles */
+.draggable {
+    cursor: grab;
+    width: 100px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute; /* Allow positioning */
+    z-index: 10; /* Ensure they are above other elements */
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
