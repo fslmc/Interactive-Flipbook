@@ -3,6 +3,34 @@ const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const book = document.querySelector("#book");
 
+// Lazy Load Background Images
+const lazyLoadBackgrounds = () => {
+    const elements = document.querySelectorAll('[data-bg]');
+    
+    const loadBackground = (entry) => {
+        const element = entry.target;
+        const bgImage = element.getAttribute('data-bg');
+        element.style.backgroundImage = `url('${bgImage}')`;
+        element.style.backgroundSize = 'cover';
+        element.removeAttribute('data-bg'); // Remove the attribute after loading
+        observer.unobserve(element); // Stop observing the element
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadBackground(entry);
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+};
+
+// Initialize Lazy Loading
+document.addEventListener('DOMContentLoaded', lazyLoadBackgrounds);
 const papers = [];
 for (let i = 1; i <= 9; i++) {
     papers.push(document.querySelector(`#paper${i}`));
